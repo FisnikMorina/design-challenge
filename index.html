@@ -168,7 +168,9 @@
 
   <p>The dataset I used in this design is from the VAST 2014 challenge [1]. It is a network of employees in a company and it is known to be incomplete. This makes it a good example for a design that is focused on missing data.</p>
 
-  <p>Looking at these works together, there is a clear gap. There are tools for showing graph structure, tools for showing uncertainty and methods for predicting missing links. But there is not much work on interfaces that combine all three in a way that someone without a graph background can use. The Missingness Map is my attempt to do that.</p>
+  <p>The three-panel structure of the Missingness Map is also grounded in established interaction design. Wang Baldonado et al. [7] identified conditions under which coordinated multiple views are effective: specifically when users need to compare different aspects of the same data and when switching between separate views would be cognitively expensive. That describes this interface precisely — the grid, the node-link diagram and the query sidebar each reveal a different facet of the same underlying gaps. Shneiderman's [6] information-seeking mantra — "overview first, zoom and filter, then details on demand" — describes the intended navigation path through the three panels directly: Panel 1 provides the overview, Panel 2 allows filtering by department and relationship type, and Panel 3 delivers the details for a specific entity.</p>
+
+  <p>Looking at these works together, there is a clear gap. There are tools for showing graph structure, tools for showing uncertainty, and methods for predicting missing links. There is also a body of work on coordinated multiple views and information-seeking patterns. But there is no interface that assembles these components specifically to make <em>absence</em> legible to a non-expert analyst. The Missingness Map is my attempt to fill that gap.</p>
 
 
   <h2>Design Description</h2>
@@ -210,7 +212,7 @@
 
   <p>I chose a bar instead of a number because bars are easier to compare visually. If one bar is much longer than another, you can see that right away without doing any calculation.</p>
 
-  <p>The three panels are designed to work together as "one". You start with the big picture in Panel 1, move to the graph structure in Panel 2 and then look at one specific person in Panel 3. This follows the natural way I would approach this kind of problem.</p>
+  <p>The three panels are designed to work together as "one". You start with the big picture in Panel 1, move to the graph structure in Panel 2 and then look at one specific person in Panel 3. This follows the natural way I would approach this kind of problem — and it maps directly onto Shneiderman's [6] information-seeking mantra of overview first, zoom and filter, then details on demand.</p>
 
 
   <figure>
@@ -273,7 +275,7 @@
 
 
   <div class="footnote">
-    <p><sup>1</sup> Wikipedia, 'Pre-attentive processing': https://en.wikipedia.org/wiki/Pre-attentive_processing</p>
+    <p><sup>1</sup> Treisman, A. M., &amp; Gelade, G. (1980). A feature-integration theory of attention. <em>Cognitive Psychology</em>, 12(1), 97–136. See also Ware [4] for an applied treatment in visualization contexts.</p>
     <p>&nbsp;</p>
     <p><strong>References</strong></p>
     <ol>
@@ -281,6 +283,9 @@
       <li>L. Getoor and C. P. Diehl. Link mining: A survey. <em>ACM SIGKDD Explorations Newsletter</em>, 7(2):3–12, 2005.</li>
       <li>I. Herman, G. Melancon, and M. S. Marshall. Graph visualization and navigation in information visualization: A survey. <em>IEEE Transactions on Visualization and Computer Graphics</em>, 6(1):24–43, 2000.</li>
       <li>C. Ware. <em>Information Visualization: Perception for Design</em>. Morgan Kaufmann, 2nd edition, 2004.</li>
+      <li>A. M. Treisman and G. Gelade. A feature-integration theory of attention. <em>Cognitive Psychology</em>, 12(1):97–136, 1980.</li>
+      <li>B. Shneiderman. The eyes have it: A task by data type taxonomy for information visualizations. In <em>Proceedings of the IEEE Symposium on Visual Languages</em>, pages 336–343, 1996.</li>
+      <li>M. Q. Wang Baldonado, A. Woodruff, and A. Kuchinsky. Guidelines for using multiple views in information visualization. In <em>Proceedings of the Working Conference on Advanced Visual Interfaces</em>, pages 110–119, 2000.</li>
     </ol>
   </div>
 
