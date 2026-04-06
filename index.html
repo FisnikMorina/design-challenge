@@ -135,7 +135,6 @@
 <body>
 
 <div class="header">
-  <div class="publication-tag">Visual Analytics for Big Data · Design Challenge</div>
   <h1>The Missingness Map</h1>
   <p class="subtitle">Designing a visual analytics interface for inferring missing data in knowledge graphs</p>
   <div class="byline">
@@ -145,37 +144,37 @@
 
 <div class="body">
 
-  <p>Knowledge graphs are used to store and connect information but they are almost never complete. In real datasets some interactions are never recorded, some relationships are missing and some people or entities have very little information about them.</p>
+  <p>Knowledge graphs are used to store and connect information but they are almost never complete. In real datasets some interactions are never recorded and some relationships are missing and some people or entities have very little information about them.</p>
 
-  <p>Most tools for visualizing graphs show what is in the data. But for an analyst or journalist who wants to understand a complex situation, the things that are <em>not</em> there can be just as important as the things that are.</p>
+  <p>Most tools for visualizing graphs show what is in the data. But for an analyst/journalist who wants to understand a complex situation, the things that are <em>not</em> there can be just as important as the things that are.</p>
 
   <blockquote>
-    "Absence should be something you can see and interact with — not just empty space you have to notice on your own."
+    "Absence should be something you can see and interact with rather than just empty space you have to notice on your own."
   </blockquote>
 
-  <p>In this report I present a design called the <strong>Missingness Map</strong>. It is a visual interface with three panels that helps analysts find and think about missing data in knowledge graphs. To make my design more concrete, I used the GAStech dataset from VAST 2014. This dataset records emails, meetings and other interactions between employees in six departments. It is a good choice because the data is known to be incomplete, which makes it a realistic example for this kind of problem.</p>
+  <p>In this report I present a design called the <strong>Missingness Map</strong>. It is a visual interface with three panels that helps analysts find and think about missing data in knowledge graphs. To make my design more concrete, I used the GAStech dataset from VAST 2014. This dataset records emails, meetings and other interactions between employees in six departments. It is a good choice because the data is known to be incomplete, which makes it a good example for this kind of problem.</p>
 
-  <p>The goal of the design is not to tell the analyst what is missing. The goal is to give them the tools to find it, understand why it might be missing and then decide if it means something. I tried to make the interface simple enough for someone who does not have experience with graphs, while still giving them enough information to do real analytical work.</p>
+  <p>The goal of the design is not to tell the analyst what is missing. The goal is to give them the tools to find it, understand why it might be missing and then decide if that means something. I tried to make the interface simple enough for someone who does not have experience with graphs, while still giving them enough information to do real analytical work.</p>
 
 
   <h2>Literature Review</h2>
 
   <p>Visualizing knowledge graphs is not a new problem. Herman et al. [3] looked at many different ways to show graphs visually, including node-link diagrams and adjacency matrices. They found that node-link diagrams are good for showing connections between entities, but they become hard to read when the graph is large. This is one of the reasons why the Missingness Map does not use only a node-link diagram. The middle panel does use one, but it always shows only a small part of the graph at a time, which keeps it readable.</p>
 
-  <p>Most visualization tools focus on what is in the data. Not many tools focus on what is not there. A related area is uncertainty visualization. Ware [4] explains how visual properties like opacity and color can be used to show how confident we are in the data. This idea influenced the Missingness Map. I used node opacity to show how much we know about each person. A faded node does not mean the person is not important. It means their record is thin, and that is something worth noticing.</p>
+  <p>Most visualization tools focus on what is in the data. Not many tools focus on what is not there, from what I saw. A related area is uncertainty visualization. Ware [4] explains how visual properties like opacity and color can be used to show how confident we are in the data. This idea influenced the Missingness Map. I used node opacity to show how much we know about each person. A faded node does not mean the person is not important. It means their record is thin and that is something worth noticing or investigating.</p>
 
   <p>To show missing connections, you first need a way to predict them. Getoor and Diehl [2] give an overview of link prediction in graphs. This is the task of finding edges that probably exist but are not recorded yet. They show that things like shared contacts and similar roles are good signals for predicting missing links. The dashed lines in Panel 2 of the Missingness Map are based on this kind of logic.</p>
 
   <p>The dataset I used in this design is from the VAST 2014 challenge [1]. It is a network of employees in a company and it is known to be incomplete. This makes it a good example for a design that is focused on missing data.</p>
 
-  <p>The three-panel structure of the Missingness Map is also grounded in established interaction design. Wang Baldonado et al. [7] identified conditions under which coordinated multiple views are effective: specifically when users need to compare different aspects of the same data and when switching between separate views would be cognitively expensive. That describes this interface precisely — the grid, the node-link diagram and the query sidebar each reveal a different facet of the same underlying gaps. Shneiderman's [6] information-seeking mantra — "overview first, zoom and filter, then details on demand" — describes the intended navigation path through the three panels directly: Panel 1 provides the overview, Panel 2 allows filtering by department and relationship type, and Panel 3 delivers the details for a specific entity.</p>
+  <p>The three-panel fomrat of the Missingness Map is also grounded in established interaction design. Wang Baldonado et al. [7] identified conditions under which coordinated multiple views are effective: specifically when users need to compare different aspects of the same data and when switching between separate views would be cognitively expensive. That describes this interface precisely. The grid, the node-link diagram and the query sidebar each reveal a different facet of the same underlying gaps an anyalyst would try to investigate. Shneiderman's [6] information-seeking mantra: "overview first, zoom and filter, then details on demand" describes the intended navigation path through the three panels directly: Panel 1 provides the overview, Panel 2 allows filtering by department and relationship type and Panel 3 shows the details for a specific entity.</p>
 
-  <p>Looking at these works together, there is a clear gap. There are tools for showing graph structure, tools for showing uncertainty, and methods for predicting missing links. There is also a body of work on coordinated multiple views and information-seeking patterns. But there is no interface that assembles these components specifically to make <em>absence</em> legible to a non-expert analyst. The Missingness Map is my attempt to fill that gap.</p>
+  <p>Looking at these works together, there is a gap. There are tools for showing graph structure, tools for showing uncertainty and methods for predicting missing links. There is also work on coordinated multiple views and information-seeking patterns. But there is no interface (from what I found) that assembles these components specifically to make <em>absence</em> clear to a non-expert analyst. The Missingness Map is my attempt to fill that gap.</p>
 
 
   <h2>Design Description</h2>
 
-  <p>The Missingness Map is an interface with three panels for exploring missing data in knowledge graphs. I used the GAStech dataset from VAST 2014, which is a network of employees across six departments. The dataset includes emails, meetings, proximity events and reporting relationships. What makes it useful for this design is that it is known to be incomplete. Some interactions were never recorded and the gaps are not random. They appear more in certain departments and certain types of relationships. With this design I try to make those patterns visible.</p>
+  <p>The Missingness Map is an interface with three panels for exploring missing data in knowledge graphs. I used the GAStech dataset from VAST 2014, which is a network of employees across six departments. The dataset includes emails, meetings, proximity events and reporting relationships. What makes it useful for this design is that it is known to be incomplete, as mentioned abovee. Some interactions were never recorded and the gaps are not random. They appear more in certain departments and certain types of relationships. With this design I try to make those patterns visible.</p>
 
 
   <h2>Panel 1 — The Expectation Grid</h2>
@@ -194,11 +193,11 @@
 
   <h2>Panel 2 — The Inference Workspace</h2>
 
-  <p>The middle panel shows a node-link diagram of the people in the dataset. The most important thing here is to show confirmed and predicted connections in very different ways. Confirmed interactions are drawn as solid blue lines. Predicted connections that are missing from the record are drawn as dashed yellow/orange lines.</p>
+  <p>The middle panel shows a node-link diagram of the people in the dataset. The most important thing here is to show confirmed and predicted connections in much different ways. Confirmed interactions are drawn as solid blue lines. Predicted connections that are missing from the record are drawn as dashed yellow/orange lines.</p>
 
-  <p>I chose dashed lines because in many visual contexts, dashes are used to show something that is incomplete or uncertain. Most people understand this without reading a legend. But I included a legend at the bottom anyway to make it clear.</p>
+  <p>I chose dashed lines because in many visual contexts, dashes are used to show something that is incomplete or uncertain. Most people understand this without needing a legend. But I included a legend at the bottom anyway to make it clear.</p>
 
-  <p>The nodes use two types of encoding at the same time. Color shows which department the person belongs to. Opacity shows how much we know about that person. A node that is fully visible means the person has a lot of recorded interactions. A node that is faded means their record is thin. I used opacity here because the nodes stay the same size and position. The analyst can still see it and click on it, they just get a signal that the data behind it is not very strong. This matters because a person with very few records is not a mistake in the data — it is something worth investigating.</p>
+  <p>The nodes use two types of encoding at the same time. Color shows which department the person belongs to. Opacity shows how much we know about that person. A node that is fully visible means the person has a lot of recorded interactions. A node that is faded means their record is thin. I used opacity here because the nodes stay the same size and position. The analyst can still see it and click on it, they just get a signal that the data behind it is not very strong. This matters because a person with very few records is not a mistake in the data, but it is something worth investigating.</p>
 
 
   <figure>
@@ -212,7 +211,7 @@
 
   <p>I chose a bar instead of a number because bars are easier to compare visually. If one bar is much longer than another, you can see that right away without doing any calculation.</p>
 
-  <p>The three panels are designed to work together as "one". You start with the big picture in Panel 1, move to the graph structure in Panel 2 and then look at one specific person in Panel 3. This follows the natural way I would approach this kind of problem — and it maps directly onto Shneiderman's [6] information-seeking mantra of overview first, zoom and filter, then details on demand.</p>
+  <p>The three panels are designed to work together as "one". You start with the big picture in Panel 1, move to the graph structure in Panel 2 and then look at one specific person in Panel 3. This follows the natural way I would approach this kind of problem and it maps into Shneiderman's [6] information-seeking mantra of overview first, zoom and filter then details on demand.</p>
 
 
   <figure>
@@ -222,56 +221,56 @@
 
   <h2>How it works — A scenario</h2>
 
-  <p>To show how the design works, I will describe a simple scenario using the GAStech dataset. Imagine an analyst who wants to find out if certain communication patterns in the company were missing or just not recorded. They are not an expert in graph analysis. They just know the organization and they have a feeling that something is not right in the Engineering department.</p>
+  <p>To show how the design works, I will describe a simple scenario. Imagine an analyst who wants to find out if certain communication patterns in the company were missing or just not recorded. They are not an expert in graph analysis. They just know the organization and they have a feeling that something is not right in the Engineering department.</p>
 
   <p>They open the interface and the first thing they see is the Expectation Grid. Most cells are green or grey, but two cells are yellow/orange right away: Engineering and Email, and Engineering and Meeting.</p>
 
-  <p>They click on the Engineering and Meeting cell. The middle panel changes. The Engineering nodes become more visible and the rest of the graph becomes less visible. One thing stands out immediately: Lars A., one of the Engineering employees, has almost no confirmed connections. His node is very faded compared to the others. But there are two dashed yellow/orange lines connected to him, which means there are two predicted gaps.</p>
+  <p>They click on the Engineering and Meeting cell. The middle panel changes. The Engineering nodes become more visible and the rest of the graph becomes less visible. One thing stands out immediately: Lars A., one of the Engineering employees, has almost no confirmed connections. His node is very faded compared to the others. But there are two dashed yellow/orange lines connected to him which means there are two predicted gaps.</p>
 
   <p>The analyst moves their mouse over the dashed line between Lars and Ada M., who is in the Executive department. A small box appears that says: "2 shared contacts, no meeting record in 18 days". This is a useful signal. In most companies you would expect some contact between Engineering and the executive level over 18 days. The fact that nothing is recorded is either an oversight or something more deliberate.</p>
 
   <p>They click on Lars's node. Panel 3 on the right side updates and shows two predicted missing connections. One is to Ada M. with a long confidence bar. The other is to Hennie O. in the Security department with a shorter bar. The reason given for the Security connection is "Engineering-Security structural overlap detected", which is less specific. The shorter bar makes it easy to see that this prediction is less reliable.</p>
 
-  <p>At this point the analyst might go back to Panel 1 and click Security and Meeting to check from the other side. The graph updates, Hennie's node becomes more visible, and the analyst can see if the same gap appears from a different angle. In this case it does, which makes the prediction stronger.</p>
+  <p>At this point the analyst might go back to Panel 1 and click Security and Meeting to check from the other side. The graph updates, Hennie's node becomes more visible and the analyst can see if the same gap appears from a different angle. In this case it does which makes the prediction stronger.</p>
 
-  <p>The whole process takes only a few minutes. The analyst did not need to understand graph theory or read an adjacency matrix. The design shows the gaps directly and gives enough context to decide if they are meaningful.</p>
+  <p>The whole process takes only a few minutes. The analyst did not need to understand graph theory or read any adjacency matrix. The design shows the gaps directly and gives enough context to decide if they are meaningful.</p>
 
 
-  <h2>Design Process — What I tried before this, and why it didn't work</h2>
+  <h2>Design Process — What I tried before this and why it didn't work</h2>
 
-  <p>The starting point for this design was a question that felt more interesting to me than the usual knowledge graph problems: what does it actually look like when something is missing? Most visualizations focus on what is there and I wanted to see if I could make what is not there equally visible, without the interface looking like empty space, which is what usually happens.</p>
+  <p>The starting point for this design was a question that felt more interesting to me than the usual knowledge graph problems: what does it actually look like when something is missing? Most visualizations focus on what is there and I wanted to see if I could make what is not there equally visible without the interface looking like empty space, which is what usually happens.</p>
 
   <p>My first idea was to use a normal node-link diagram with some kind of uncertainty overlay. It is the most obvious approach and I spent some time thinking about it. The problem is that in a node-link diagram, absence has no natural visual form. You can add dashed edges, which I eventually did, but if that is the only thing then the analyst has no idea where to look first. A graph with forty dashed edges all over the place is not really more useful than one with none.</p>
 
   <blockquote>
-    "Before you can see a gap, you need to know what you expected to see."
+    Before you can see a gap, you need to know what you expected to see.
   </blockquote>
 
   <p>That is what led me to the Expectation Grid as a separate panel. The main idea is that before you can see a gap, you need to know what you expected to see. The grid gives that information at a high level, so the analyst can get oriented before they start looking at individual people. It also helped because I did not have to put too much into the node-link diagram at once. Each panel could do one thing well instead of one panel trying to do everything.</p>
 
-  <p>The idea to use opacity for record confidence came later. In earlier versions, I used node size, but that led to a known problem: small nodes are harder to label and space is limited. Opacity is better because the node stays the same size. The analyst can interact with it, they just get a visual signal that the data is not complete.</p>
+  <p>The idea to use opacity for record confidence came to me later. In earlier versions, I used node size, but that led to a known problem: small nodes are harder to label and space is limited. Opacity is better because the node stays the same size. The analyst can interact with it, they just get a visual signal that the data is not complete.</p>
 
-  <p>One thing I decided not to include was an automatic layout that would group nodes by department or by how many gaps they have. The positions in the design are fixed. Automatic layouts tend to move things around between clicks, which makes it hard to build a mental picture of the graph. I thought stability was more important than perfect grouping, especially for someone who has not seen the data before.</p>
+  <p>One thing I decided not to include was an automatic layout that would group nodes by department or by how many gaps they have. The positions in the design are fixed. Automatic layouts tend to move things around between clicks, which makes it hard to build a mental picture of the graph, at least that is the case for me. I thought stability was more important than perfect grouping, especially for someone who has not seen the data before.</p>
 
 
   <h2>Limitations — Where this breaks down</h2>
 
-  <p>The biggest limitation is that the Expectation Grid needs a baseline to work. It has to know how many interactions you would expect before it can say that something is missing. In this design I built that baseline from the organizational structure and role types. But in a real situation, that baseline has to come from somewhere reliable. If you try to calculate it from the graph itself, you get a circular problem. And if the domain is something unfamiliar, it might be hard to know what normal looks like at all. This is a very real problem in real-world scenarios, but in this case the data allowed me to showcase my design.</p>
+  <p>The biggest limitation is that the Expectation Grid needs a baseline to work. It has to know how many interactions you would expect before it can say that something is missing. In this design I built that baseline from the organizational structure and role types. But in a real situation, that baseline has to come from somewhere reliable. If you try to calculate it from the graph itself, you get a circular problem. And if the domain is something unfamiliar, it is hard to know what normal looks like at all. This is a very real problem in real-world scenarios, but in this case the data allowed me to showcase my design.</p>
 
-  <p>The design also works best when the data has a clear and simple structure. It fits well with networks where people belong to groups and relationships have specific types, like emails or meetings in our case. If the knowledge graph is more mixed — for example a medical graph that includes genes, diseases and treatments all together — the grid in Panel 1 does not really work because the rows and columns do not map onto anything clear.</p>
+  <p>The design also works best when the data has a clear and simple structure. It fits well with networks where people belong to groups and relationships have specific types, like emails or meetings in our case. If the knowledge graph is more mixed, for example a medical graph that includes genes, diseases and treatments all together, the grid in Panel 1 does not really work because the rows and columns do not map onto anything clear.</p>
 
-  <p>For scale, the node-link panel in Panel 2 starts to become hard to read somewhere around 30 to 40 nodes. The grid in Panel 1 handles larger datasets better because it groups everything together. But the middle panel would need extra features like filters or zoom to stay useful with more data.</p>
+  <p>For scale, the node-link panel in Panel 2 is a problem I imagine. It becomes hard to read and create a mental picture with 30-40 nodes. The grid in Panel 1 handles larger datasets better because it groups everything together. But the middle panel would need extra features like filters or zoom to stay useful with more data.</p>
 
   <p>The dashed edges also depend on a link prediction model working in the background. In this design they are hardcoded, but a real version would need an algorithm that can calculate how likely a missing connection is based on the rest of the graph. How useful the inference layer is depends entirely on how good that algorithm is.</p>
 
-  <p>Also, the interactions like hovering and clicking between panels are not easy to use on a phone or touch screen. The design is made for desktop use, which is fine since the expert will have a desktop.</p>
+  <p>Also hovering and clicking between panels is not easy to use on a phone or touch screen. The design is made for desktop use, which is fine since the expert will have a desktop, presumably.</p>
 
 
   <h2>Reflection</h2>
 
-  <p>Approaching this challenge without a fixed analytical task was harder than I expected. When you have a specific question to answer, the design decisions come more naturally because the problem tells you what it needs. Here, I had to define the problem myself. I had to think carefully about who I was designing for and what they would actually want to find out. I spent more time on the concept before making anything visual.</p>
+  <p>Approaching this challenge without a fixed analytical task was harder than I expected. When you have a specific question to answer, the design decisions come more naturally because the problem tells you what it needs. Here I had to define the problem myself. I had to think carefully about who I was designing for and what they would actually want to find out. I spent more time on the concept before making anything visual.</p>
 
-  <p>Making "missingness" feel like a real visual element and not just empty space was, I think, the most difficult part. It sounds simple to say "show gaps in the data" but most visual tools are built around things that exist. You can color a node or draw an edge, but with missing data there is nothing there to encode directly. I had to think about what <em>should</em> be there instead of what <em>is</em> there. The Expectation Grid was my answer to this problem but it took a while to get to it. My first sketches just added dashed edges to a normal graph and it did not really work. The gaps were not visible unless you already knew where to look.</p>
+  <p>Making "missingness" feel like the real visual element and not just empty space was, I think, the most difficult part. It seems simple at first too "show gaps in the data" but most visual tools are built around things that exist. You can color a node or draw an edge but with missing data there is nothing there to encode directly. I had to think about what <em>should</em> be there instead of what <em>is</em> there. The Expectation Grid was my answer to this problem but it took a while to get to it. My first sketches just added dashed edges to a normal graph and it did not really work. The gaps were not visible unless you already knew where to look.</p>
 
 
   <div class="footnote">
